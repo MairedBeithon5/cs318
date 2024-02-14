@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://cs318.page/labs/lab-5-the-onion -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="ace-monokai">.ace-monokai .ace_gutter {background: #2F3129;color: #8F908A}.ace-monokai .ace_print-margin {width: 1px;background: #555651}.ace-monokai {background-color: #272822;color: #F8F8F2}.ace-monokai .ace_cursor {color: #F8F8F0}.ace-monokai .ace_marker-layer .ace_selection {background: #49483E}.ace-monokai.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #272822;}.ace-monokai .ace_marker-layer .ace_step {background: rgb(102, 82, 0)}.ace-monokai .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #49483E}.ace-monokai .ace_marker-layer .ace_active-line {background: #202020}.ace-monokai .ace_gutter-active-line {background-color: #272727}.ace-monokai .ace_marker-layer .ace_selected-word {border: 1px solid #49483E}.ace-monokai .ace_invisible {color: #52524d}.ace-monokai .ace_entity.ace_name.ace_tag,.ace-monokai .ace_keyword,.ace-monokai .ace_meta.ace_tag,.ace-monokai .ace_storage {color: #F92672}.ace-monokai .ace_punctuation,.ace-monokai .ace_punctuation.ace_tag {color: #fff}.ace-monokai .ace_constant.ace_character,.ace-monokai .ace_constant.ace_language,.ace-monokai .ace_constant.ace_numeric,.ace-monokai .ace_constant.ace_other {color: #AE81FF}.ace-monokai .ace_invalid {color: #F8F8F0;background-color: #F92672}.ace-monokai .ace_invalid.ace_deprecated {color: #F8F8F0;background-color: #AE81FF}.ace-monokai .ace_support.ace_constant,.ace-monokai .ace_support.ace_function {color: #66D9EF}.ace-monokai .ace_fold {background-color: #A6E22E;border-color: #F8F8F2}.ace-monokai .ace_storage.ace_type,.ace-monokai .ace_support.ace_class,.ace-monokai .ace_support.ace_type {font-style: italic;color: #66D9EF}.ace-monokai .ace_entity.ace_name.ace_function,.ace-monokai .ace_entity.ace_other,.ace-monokai .ace_entity.ace_other.ace_attribute-name,.ace-monokai .ace_variable {color: #A6E22E}.ace-monokai .ace_variable.ace_parameter {font-style: italic;color: #FD971F}.ace-monokai .ace_string {color: #E6DB74}.ace-monokai .ace_comment {color: #75715E}.ace-monokai .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-monokai */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {border: 1px solid lightgray;display: inline-block;margin: -1px 8px;padding: 0 5px;pointer-events: auto;cursor: pointer;}.ace_inline_button:hover {border-color: gray;background: rgba(200,200,200,0.2);display: inline-block;pointer-events: auto;}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>CS-318</title>
+	<link rel="stylesheet" href="./CS-318_files/styles.css">
+	<link rel="icon" type="image/png" href="https://cs318.page/images/favicon/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="https://cs318.page/images/favicon/favicon-16x16.png" sizes="16x16">
+	<!-- Prism for syntax highlighting -->
+	<link rel="stylesheet" href="./CS-318_files/prism-okaidia.min.css">
+	<script src="./CS-318_files/prism.min.js.download"></script>
+	<script src="./CS-318_files/prism-autoloader.min.js.download"></script>
+	<script src="./CS-318_files/ace.min.js.download"></script>
+
+	<script src="./CS-318_files/scripts.js.download"></script>
+	<script src="./CS-318_files/theme-monokai.js.download"></script><script src="./CS-318_files/mode-vibrant_ink.js.download"></script><script src="./CS-318_files/mode-html.js.download"></script><script src="./CS-318_files/mode-css.js.download"></script></head>
+<body>
+	<header>
+		<a href="https://cs318.page/">
+			<div>
+				<h1>Computer Science 318</h1>
+				<hr>
+				<p>Fundamentals of Web Design</p>
+			</div>
+		</a>
+		<nav>
+			<a href="https://cs318.page/client">Client Project</a>
+			<a href="https://cs318.page/portfolio">Portfolio Project</a>
+			<a href="https://cs318.page/labs">Labs</a>
+		</nav>
+	</header>
+	<main><section class="lab">
+    <h2>Lab 05 The Onion</h2>
+    <hr>
+
+    <h3 class="goal">Goal</h3>
+    <ul>
+<li>HTML: Learn <code>&lt;sections&gt;</code>, <code>&lt;articles&gt;</code>, <code>&lt;footers&gt;</code>, and other uses for <code>&lt;a&gt;</code>.</li>
+<li>HTML comment tag</li>
+<li>CSS: Pseudo-classes, and border property</li>
+</ul></section>
+<section class="learn">
+    <h3>Learn</h3>
+    <h4>New HTML</h4>
+<p></p><pre class=" language-html" tabindex="0"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Famous Wizards<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Gandalf, Dumbledore, Rincewind...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span></code></pre><p></p>
+<p><code>&lt;section&gt;</code> -  represents a standalone section which doesn't have a more specific semantic element to represent it contained within an HTML document. Typically, but not always, sections have a heading.</p>
+<p></p><pre class=" language-html" tabindex="0"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>How to be a wizard<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Grow a long, majestic beard.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Wear a tall, pointed hat.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Have I mentioned the beard?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>© 2018 Gandalf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span></code></pre><p></p>
+<p><code>&lt;article&gt;</code> - represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributed or reused. Examples would be a forum post, magazine or newspaper article, or a blog entry.</p>
+<p><code>&lt;footer&gt;</code> - element represents a footer for a section of content. Typically <code>&lt;footer&gt;</code> are used in a <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;main&gt;</code>, or <code>&lt;body&gt;</code>. A footer typically contains information about the author of the section, copyright data or links to related documents.</p>
+<p></p><pre class=" language-html" tabindex="0"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>importantdocument.pdf<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Important Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mailto:hansontm@uwec.edu<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Email Me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tel:123456789<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Call Me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#one<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Go Section 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>one</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span></code></pre><p></p>
+<p><code>&lt;a&gt;</code> - Thus far we  have only used the <code>&lt;a&gt;</code> anchor tag to create a link to a website, but there are other possibilities. Using the href attribute you can link to a file (like a pdf), telephone number, email address, and locations within the same page.</p>
+<p>file - When linking to a file use the url or file path in the href.<br>
+email - When linking to a email address use mailto: followed by the email address in the href.<br>
+phone - When linking to a phone number use tel: followed by the phone number without spaces or dashes in the href.<br>
+id - When creating a jump link to an id use # followed by the ID attributes value.   </p>
+<h4>CSS</h4>
+<p></p><pre class=" language-css" tabindex="0"><code class=" language-css"><span class="token selector">div</span><span class="token punctuation">{</span>
+    <span class="token property">border-width</span><span class="token punctuation">:</span>.125rem<span class="token punctuation">;</span>
+    <span class="token property">border-style</span><span class="token punctuation">:</span>dashed<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span>red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div</span><span class="token punctuation">{</span>
+    <span class="token property">border</span><span class="token punctuation">:</span>.125rem dashed red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p></p>
+<p><code>border-width</code> - sets the width of an element's border.<br>
+<code>border-style</code> - sets the line style for all four sides of an element's border.<br>
+<code>border-color</code> - sets the color of an element's border.<br>
+<code>border</code> - shorthand for all border settings. Values must be in this order: width | style | color</p>
+<p>Values for border-style: </p>
+<ul>
+<li>none</li>
+<li>hidden</li>
+<li>dotted</li>
+<li>dashed</li>
+<li>solid</li>
+<li>double</li>
+<li>groove</li>
+<li>ridge</li>
+<li>inset</li>
+<li>outset</li>
+</ul>
+<h4>CSS Pseudo-class</h4>
+<p></p><pre class=" language-css" tabindex="0"><code class=" language-css"><span class="token selector">a</span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span>blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">a:hover</span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span>red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p></p>
+<p>Is a keyword added to a selector that specifies a special state of the selected element(s). For example above the <code>&lt;a&gt;</code> font color is blue, but when the user hovers over it, it will turn red.</p>
+<h4>HTML Comment Tag</h4>
+<p></p><pre class=" language-html" tabindex="0"><code class=" language-html"><span class="token comment">&lt;!--This is a comment. Comments are not displayed in the browser--&gt;</span></code></pre><p></p>
+<p>The comment tag is used to insert comments in the source code. Comments are not displayed in the browsers.</p>
+<p>You can use comments to explain your code, which can help you when you edit the source code at a later date. This is especially useful if you have a lot of code.</p></section>
+<section class="practice">
+    <h3>Practice</h3>
+    <p><span class="experiment">Experiment</span> Try adding a dashed yellow border to the a. Then add a new declaration for the hover state on the a. For hover change the background color to yellow, font color to blue, and the border to blue.</p>
+<p></p><div class="normal demo">
+			<div>
+			<h4>HTML</h4>
+			<div class="html editor ace_editor ace-monokai ace_dark" style="font-size: 16px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 19px; left: 46px;"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 42px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 42px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 38px; top: 0px;">1<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="line-height: 19px; left: 42px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 321px; height: 396px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 708px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_bracket ace_start ace_br15" style="height: 19px; width: 8.79688px; top: 19px; left: 100.766px;"></div></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line_group" style="height: 38px; top: 0px;"><div class="ace_line" style="height: 19px;"><span class="ace_meta ace_tag ace_punctuation ace_tag-open ace_xml">&lt;</span><span class="ace_meta ace_tag ace_anchor ace_tag-name ace_xml">a</span><span class="ace_text ace_tag-whitespace ace_xml"> </span><span class="ace_entity ace_other ace_attribute-name ace_xml">href</span><span class="ace_keyword ace_operator ace_attribute-equals ace_xml">=</span><span class="ace_string ace_attribute-value ace_xml">"https://www.uwec.edu/"</span></div><div class="ace_line" style="height: 19px;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_meta ace_tag ace_punctuation ace_tag-close ace_xml">&gt;</span><span class="ace_text ace_xml">UWEC</span><span class="ace_meta ace_tag ace_punctuation ace_end-tag-open ace_xml">&lt;/</span><span class="ace_meta ace_tag ace_anchor ace_tag-name ace_xml">a</span><span class="ace_meta ace_tag ace_punctuation ace_tag-close ace_xml">&gt;</span></div></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 9px; height: 19px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 22px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 22px; height: 38px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 42px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 321px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div>
+		</div>
+				<div>
+			<h4>CSS</h4>
+			<div class="css editor ace_editor ace-monokai ace_dark" style="font-size: 16px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 19px; left: 46px;"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 42px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 42px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 19px; top: 0px;">1<span style="display: inline-block; height: 19px;" class="ace_fold-widget ace_start ace_open"></span></div><div class="ace_gutter-cell " style="height: 19px; top: 19px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 19px; top: 38px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 19px; top: 57px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 19px; top: 76px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 19px; top: 95px;">6<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="line-height: 19px; left: 42px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 321px; height: 358px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 708px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line_group" style="height: 19px; top: 0px;"><div class="ace_line" style="height: 19px;"><span class="ace_constant">a</span><span class="ace_paren ace_lparen">{</span></div></div><div class="ace_line_group" style="height: 19px; top: 19px;"><div class="ace_line" style="height: 19px;"><span class="ace_indent-guide">  </span>  <span class="ace_support ace_type">background-color</span><span class="ace_punctuation ace_operator">:</span><span class="ace_support ace_constant ace_color">blue</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 19px; top: 38px;"><div class="ace_line" style="height: 19px;"><span class="ace_indent-guide">  </span>  <span class="ace_support ace_type">color</span><span class="ace_punctuation ace_operator">:</span><span class="ace_support ace_constant ace_color">yellow</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 19px; top: 57px;"><div class="ace_line" style="height: 19px;"><span class="ace_indent-guide">  </span>  <span class="ace_support ace_type">padding</span><span class="ace_punctuation ace_operator">:</span><span class="ace_constant ace_numeric">2</span><span class="ace_keyword">rem</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 19px; top: 76px;"><div class="ace_line" style="height: 19px;"><span class="ace_indent-guide">  </span>  <span class="ace_support ace_type">display</span><span class="ace_punctuation ace_operator">:</span><span class="ace_support ace_constant">inline-block</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 19px; top: 95px;"><div class="ace_line" style="height: 19px;"><span class="ace_paren ace_rparen">}</span></div></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 9px; height: 19px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 22px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 22px; height: 114px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 42px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 321px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div>
+		</div>
+				<div>
+			<h4>Preview</h4>
+			<iframe class="preview" src="./CS-318_files/saved_resource.html"></iframe>
+		</div>
+	</div><p></p>
+<p><input type="checkbox"> Open GitHub Desktop (you may need to download the program again if the computers get wiped.)</p>
+<p><input type="checkbox"> Couple of things to check in GitHub Desktop. </p>
+<ul>
+<li>Check to see if it says Pull Origin in the top right tab. If it does, click Pull Origin. Why? A pull occurs if you or a collaborator made a change to the repository and pushed the changes. <strong>ALWAYS MAKE SURE TO PULL BEFORE CODING!</strong></li>
+<li>If the computers were wiped you made need to reclone your repository to the computer.</li>
+</ul>
+<p><input type="checkbox"> With your cs-318 repository selected, Click open in Visual Studio code. </p>
+<p><input type="checkbox"> Create a new folder called lab5</p>
+<p><input type="checkbox"> Create a new file called index.html in the lab5 folder</p>
+<p><input type="checkbox"> Setup your HTML file</p>
+<p><input type="checkbox"> Create your stylesheet</p>
+<p><input type="checkbox"> Link your stylesheet to the HTML</p>
+<p><input type="checkbox"> Create an images folder.</p>
+<p><input type="checkbox"> Add the following svg to the images folder</p>
+<p><a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/the-onion-logo.svg" target="_blank">the-onion-logo.svg</a>
+<br>
+<em>Note this image is white. When you open it in the browser right click on the white space and select save image. I promise the image is there.</em></p>
+<p><input type="checkbox"> Change Document in the title element to "The Onion"</p>
+<p><input type="checkbox"> In the <code>&lt;body&gt;</code> element create a <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code> in that order</p>
+<p><input type="checkbox"> Add three <code>&lt;section&gt;</code> to the <code>&lt;main&gt;</code></p>
+<p><input type="checkbox"> Add the following content into the <code>&lt;header&gt;</code> "The Onion News Sports Entertainment"</p>
+<p><input type="checkbox"> Add the following bullet points of content into the <code>&lt;section&gt;</code></p>
+<ul>
+<li>News
+New Study Finds Americans Scoot Over At Least 10 Miles Per Year
+WASHINGTON" A new study published Wednesday by the Department of Transportation reveals that the average U.S. resident travels some 10 miles annually solely through the act of scooting over to make room for another person. Between park benches, bleachers, backseats, and various other types of shared, communal seating, the typical American scoots nearly a mile a month, said Department Secretary Anthony Foxx, who added that, taken all together, a lifetime's worth of scooting over, sliding over, scooching, and making a bit more room would equal the distance from the nation's capital to Orlando, FL. The statistics are even higher in the South, where picnic season is longer. And if you count instances of scooting over, seeing the other person has already found a place, and then scooting back, many Americans travel farther by scooting than they do by motor vehicle. The study's methodology has come under fire from critics who argue it should have also counted situations in which sitters must move their chair over to make room for someone who already has their own chair.
+The Onion
+September 18, 2013
+Black Guy Asks Nation For Change
+CHICAGO ”According to witnesses, a loud black man approached a crowd of some 4,000 strangers in downtown Chicago Tuesday and made repeated demands for change.
+"The time for change is now," said the black guy, yelling at everyone within earshot for 20 straight minutes, practically begging America for change. "The need for change is stronger and more urgent than ever before. And only you the people standing here today, and indeed all the people of this great nation only you can deliver this change."
+It is estimated that, to date, the black man has asked every single person in the United States for change.
+"I've already seen this guy four times today," Chicago-area ad salesman Blake Gordon said. "Every time, it's the same exact spiel. 'I need change.' 'I want change.' Why's he so eager for all this change? What's he going to do with it, anyway?"
+After his initial requests for change, the black man rambled nonstop on a variety of unrelated topics, calling for affordable health care, demanding that the government immediately begin withdrawing troops from Iraq, and proposing a $75 billion economic stimulus plan to create new jobs.
+"What a wacko," Schaumburg, IL resident Patrick Morledge said. "And, of course, after telling us all about how he had the ability to magically fix everything, he went right back to asking for change. Typical."
+"If he's really looking for change, he's got the wrong guy," Morledge added.
+Reports indicate that the black man has been riding from city to city across the country, asking for change wherever he goes. Citizens in Austin, TX said they spotted the same guy standing on the street Friday, shouting far-fetched ideas about global warming. Cleveland residents also reported seeing him in a local park, wildly gesticulating and quoting from the Bible. And last week, patrons at the Starlight Diner in Cheyenne, WY claimed that the black man accosted them while they were eating, repeatedly requesting change.
+"I saw him walk in and I knew he was headed straight for our table," said mother of three Gladys Davies. "He just stood there smiling at us for a while, and asked how our food tasted. Then he went and did the same thing at the next table over. The nerve of some people."
+Those who encountered the black man Tuesday said he engaged in erratic behavior, including pointing at random people in the crowd and desperately saying he needs their help, going up to complete strangers and hugging them, and angrily claiming that he is not looking for just a little bit of change, but rather a great deal of change, and that he wants it "right now."
+"I'll be honest, when that black guy said he would 'stop at nothing' to get change, it kind of scared me," local mechanic Phil Nighbert said. "Just leave me alone."
+Though many were taken aback by the black man's brazen demands, some, such as Jackson, MS's Holly Moser, sympathized with him. She gave the black man credit for boldly standing up and asking every last person around him for change.
+"I told him I'd give him some if I saw him later, even though I probably won't," Moser said. "Very nice man, though."
+Most, however, ignored his requests.
+"I'm a hardworking American who pays his taxes, and the last thing I need is some guy on the street demanding change from me," said William Overkamp, a Springfield, IL gun-shop owner.
+He added, "What he really needs is a job."
+The Onion
+March 19, 2008
+Wealthy Teen Nearly Experiences Consequence
+SOMERSET, NJ In what local authorities are calling a "near tragedy," Charles Wentworth, a 17-year-old Rutgers Preparatory senior and member of the affluent Wentworth family, came perilously close to suffering a consequence resulting from his own wrongdoing Saturday.
+Wentworth, reportedly ignoring the protests of his classmates, got behind the wheel of his turbocharged Supra 2000GT after consuming half the contents of a bottle of Goldschlager at a friend's party. While driving westbound on Route 27, a disoriented Wentworth drifted across two lanes of traffic and collided with a minivan carrying a family of four, bringing the teen face-to-face with a potentially life-altering lesson.
+Wentworth escaped unscathed and unpunished, however, when his airbags deployed and a team of high-powered attorneys rushed to the scene and rescued him from the brink of personal responsibility.
+"Amazingly, Mr. Wentworth did not experience a single repercussion for consuming alcohol under age or operating a motor vehicle while intoxicated, and is furthermore completely unaware that he did anything wrong," local police chief Marvin Taylor said. "He is a very lucky boy."
+"If he had been driving just 5 mph faster, or if his parents hadn't had the influence to keep the matter out of court and the endless financial resources to lease a car of the exact same make and model to prevent him from having to face even the relatively trivial humiliation of being taunted by his peers for driving a slightly less expensive vehicle my God, who knows what could have happened?" Taylor added. "He could have died or, worse, been held accountable for his actions."
+According to police reports that have since been shredded and stricken from Wentworth's permanent record, when briefly taken into custody, the privileged teenager began swearing, vomiting, and kicking at the windows of the squad car in which he was momentarily placed following the collision. Wentworth later said the only thing that got him through that dark time was thinking of his rich, well-connected loved ones. With them in mind, he repeatedly shouted, "Don't you know who I am?" and summoned the strength to refuse a field sobriety test.
+"A lot of kids in Charles' situation would have confessed and accepted punishment for their mistake, but my son is strong," said Wentworth's father, aluminum magnate Herman Wentworth, who after arriving at the crash site told his son that "everything is taken care of," and while Charles sat in his father's BMW texting his friends, loudly threatened to call the police commissioner if any charges were pressed. "Charles would never allow himself to give up and gain valuable insight into the way things work in the real world without a fight."
+District Judge and close friend of the Wentworth family Donald Lamb agreed.
+"Charles is very lucky to be alive and well-off," Lamb told reporters. "The fact that he was able to walk away from this crash with no injuries, zero remorse, and his skewed priorities in one piece is a miracle."
+Despite returning to the safety of his $2.3 million home, Wentworth's harrowing brush with consequence was not over.
+A week after the near ordeal, Wentworth was again put in jeopardy of learning a lesson when he was nearly sentenced to 50 hours of community service. Tragedy was averted, however, when his mother paid a consultant to testify before the judge that Wentworth had suffered emotional trauma. Further, during this time, Wentworth was forced to put his video game on pause for several seconds in order to sign affidavits stating that the Breathalyzer was administered improperly.
+"To think that I was that close to seeing that there is an entire society with its own laws and standards outside my protected sphere of wealth and privilege it's frightening," Wentworth said. "It almost makes you consider your actions and their impact on others. Almost."
+"I'm just grateful I can finally get back to my life as a self-centered prick who believes the entire world revolves around him," Wentworth added. "After all, I was just admitted to Columbia despite almost failing out of high school because I rarely attended class, and it would have been a shame to have had to defer for a semester just because of some legal unpleasantry."
+At press time, Wentworth is resting comfortably on a six-figure inheritance in a chaise lounge by his backyard pool. The other four victims of the crash remain in intensive care at St. Peter's University Hospital, suffering from conditions ranging from poor to lower-class.
+The Onion
+September 27, 2008</li>
+<li>Sports
+Report: Chucking A Baseball 99 MPH Past Highway Radar Speed Sign Remains Best Indication That You Still Got The Goods
+The Onion
+September 19, 2019
+Nike Recalls Sweat-Wicking Shirts That Pulled Gallons Of Liquid Directly From Wearers' Bodies
+BEAVERTON, OR" Warning customers to return the garments should they find themselves being drained of all fluids, Nike recalled thousands of sweat-wicking shirts Tuesday that inadvertently pulled gallons of liquid directly from wearers' bodies. If you or anyone you know puts on a Legend Dri-FIT short-sleeve training shirt and then immediately shrivels into a dried, wrinkled husk, please contact Nike for a full refund, said spokeswoman Jessica Garland, who apologized directly to customers who purchased a moisture-wicking shirt, only to have every ounce of sweat, urine, and blood sucked out of their body. You may think it's okay to wear these shirts for a routine workout at the gym, but be warned after five minutes of use, you could lose up to 40 pounds of water weight. Even if you wear it to sleep, you could wake up as nothing but a pile of desiccated flesh lying in a puddle. At press time, Nike was forced to issue a second apology after news broke of a million-dollar lawsuit alleging their compression tops had crushed the torsos of athletes into an infinitesimally small speck of dust.
+The Onion
+September 19, 2019</li>
+<li>Entertainment
+Space Jam 2 Taps Mahershala Ali To Play LeBron James
+The Onion
+July 25, 2019
+Tom Hanks Recalls Arriving On A Beautiful Day In The Neighborhood Set At Dawn For Grueling 6-Hour Cardigan-Application Process
+LOS ANGELES Saying the process called for incredible patience, Tom Hanks, who stars as Fred Rogers in the forthcoming A Beautiful Day In The Neighborhood, recalled Tuesday having to arrive on the set of the film before dawn each day for a grueling, six-hour cardigan application process. I was always at the trailer by 5 a.m. so the cardigan artist and his team of eight assistants could spend the entire morning applying the sweater, said the two-time Academy Award winner, adding that it was incredibly difficult to act in the unwieldy garment, as it was very itchy and the chemicals used to apply it often burned his skin. We were working with the top cardigan guy in Hollywood, and he spent months taking molds of my torso so he could build a sweater that would look as realistic as possible on screen. I love how it turned out, but boy, all that time spent holding perfectly still in the chair can wear you down, especially when you consider it took them an additional three hours to apply my tie. At press time, sources close to the actor confirmed Hanks was furious after learning the studio had decided to go with a CGI sweater.
+The Onion
+July 23, 2019</li>
+</ul>
+<p><input type="checkbox"> Add the following content into the <code>&lt;footer&gt;</code> "Email Us Call Us PDF of Articles"</p>
+<p><img src="./CS-318_files/screen-shot-2021-12-19-at-7.28.05-pm.png" alt="Lab 5 content setup"></p>
+<p><input type="checkbox"> In each <code>&lt;section&gt;</code> add a <code>&lt;h2&gt;</code> around the first word; News, Sports, Entertainment</p>
+<p><input type="checkbox"> In the <code>&lt;header&gt;</code> add a <code>&lt;h1&gt;</code> around "The Onion"</p>
+<p><input type="checkbox"> In between The and Onion in the <code>&lt;h1&gt;</code> add a <code>&lt;br&gt;</code></p>
+<p><input type="checkbox"> Add three <code>&lt;a&gt;</code> in the <code>&lt;header&gt;</code>. One around News, Sports, and Entertainment</p>
+<p><input type="checkbox"> Add one <code>&lt;nav&gt;</code> around all three of the <code>&lt;a&gt;</code>.<br>
+<em>We will be setting up the href as a jump link later using an id attribute</em></p>
+<p><img src="./CS-318_files/screen-shot-2021-12-19-at-7.33.57-pm.png" alt="Lab 5 header html"></p>
+<p><input type="checkbox"> Inside the <code>&lt;section&gt;</code> divide up the news articles into individual <code>&lt;article&gt;</code> elements.<br>
+<em>Tip: each article ends with a date. Also you can use the pdf to see the content of each article to help you break them down.   </em></p>
+<ul>
+<li>3 <code>&lt;article&gt;</code> in the first section</li>
+<li>2 <code>&lt;article&gt;</code> in the two section</li>
+<li>2 <code>&lt;article&gt;</code> in the two section</li>
+</ul>
+<p><input type="checkbox"> Add a <code>&lt;h3&gt;</code> to the each <code>&lt;article&gt;</code> element to the article's title (7 total titles).  </p>
+<p><img src="./CS-318_files/screen-shot-2021-12-19-at-7.42.02-pm.png" alt="Lab 5 articles and titles setup"></p>
+<p><input type="checkbox"> Add a <code>&lt;footer&gt;</code> to each <code>&lt;article&gt;</code> around the content at the end; "The Onion" and "Month, Date Year"</p>
+<p><input type="checkbox"> Add a <code>&lt;p&gt;</code> around the content inside the <code>&lt;footer&gt;</code></p>
+<p><input type="checkbox"> Add a <code>&lt;span&gt;</code> inside of the <code>&lt;p&gt;</code> you just added, around just "The Onion".<br>
+<span class="hint">Hint:</span>We are putting a span around "The Onion" because we will add some specific styling to just that content but still want it to be inline with the date. See the example below. </p>
+<p></p><pre class=" language-html" tabindex="0"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>The Onion<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> September 27, 2018<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code></pre><p></p>
+<p><input type="checkbox"> Add <code>&lt;p&gt;</code> around the individual paragraphs in the articles (27 paragraphs total).<br>
+<span class="hint">Hint:</span> Two of the articles have no paragraphs. If you are having a hard time figuring out where each paragraph begins and ends look at the pdf.</p>
+<p><a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/the-onion-articles.pdf" target="_blank">the-onion-articles.pdf</a>
+</p>
+<p><input type="checkbox"> Add all the following images into your images folder.</p>
+<p><input type="checkbox"> Add an <code>&lt;img&gt;</code> into each <code>&lt;article</code>&gt; after the <code>&lt;h3&gt;</code></p>
+<ul>
+<li>Article 1 - <a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/scoot.jpg" target="_blank">scoot.jpg</a>
+</li>
+<li>Article 2 - <a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/obama.jpg" target="_blank">obama.jpg</a>
+</li>
+<li>Article 3 - <a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/wealthy-teen.jpg" target="_blank">wealthy-teen.jpg</a>
+</li>
+<li>Article 4 - <a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/baseball.jpg" target="_blank">baseball.jpg</a>
+</li>
+<li>Article 5 - <a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/nike.jpg" target="_blank">nike.jpg</a>
+</li>
+<li>Article 6 - <a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/mahersalaali.jpg" target="_blank">mahersalaali.jpg</a>
+</li>
+<li>Article 7 - <a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/tomhanks.jpg" target="_blank">tomhanks.jpg</a>
+</li>
+</ul>
+<p><img src="./CS-318_files/screen-shot-2021-12-19-at-8.07.11-pm.png" alt="Lab 5 paragraphs and images"></p>
+<p><input type="checkbox"> Add the logo as a <code>&lt;img&gt;</code> element before the <code>&lt;h1&gt;</code> in the <code>&lt;header&gt;</code>.<br>
+<span class="hint">Hint:</span> If you refresh your page and your content has disappeared don't panic, scroll down a bit. The content is there, but the logo image is just huge and white.</p>
+<p><input type="checkbox"> Add an ID attribute to each <code>&lt;h2&gt;</code> with the following values</p>
+<ul>
+<li>news</li>
+<li>sports</li>
+<li>entertainment</li>
+</ul>
+<p><input type="checkbox"> In the <code>href=""</code> for the <code>&lt;a&gt;</code> in the <code>&lt;header&gt;</code> add the corresponding values</p>
+<ul>
+<li><code>#news</code></li>
+<li><code>#sports</code></li>
+<li><code>#entertainment</code></li>
+</ul>
+<p><img src="./CS-318_files/screen-shot-2021-12-19-at-8.15.07-pm.png" alt="Lab 5 header html with logo"></p>
+<p><input type="checkbox"> Add an <code>&lt;a&gt;</code> around the following content and href in the <code>&lt;footer&gt;</code> at the bottom of the <code>&lt;body&gt;</code></p>
+<p><strong>Content</strong>  </p>
+<ul>
+<li>Email Us</li>
+<li>Call Us</li>
+<li>PDF</li>
+</ul>
+<p><strong>HRef</strong>  </p>
+<ul>
+<li>mailto:theonion@onion.com</li>
+<li>tel:123456789</li>
+<li>the-onion-articles.pdf</li>
+</ul>
+<p><input type="checkbox"> Add this file to your lab5 folder: </p>
+<p><a href="https://webelements-cs318.s3.us-east-2.amazonaws.com/the-onion-articles.pdf" target="_blank">the-onion-articles.pdf</a>
+</p>
+<h4>CSS</h4>
+<p><code>body</code></p>
+<p><input type="checkbox"> font family - Times New Roman, Times, Serif</p>
+<p><input type="checkbox"> margin 0</p>
+<p><code>header</code></p>
+<p><input type="checkbox"> background color #275218</p>
+<p><input type="checkbox"> color #fff</p>
+<p><code>header&gt;img</code><br>
+<em>This selector will only select direct descendent images of the header</em></p>
+<p><input type="checkbox"> max-width 6rem</p>
+<p><input type="checkbox"> margin 1rem</p>
+<p><code>header&gt;h1</code></p>
+<p><input type="checkbox"> display inline-block</p>
+<p><input type="checkbox"> margin 1rem 0</p>
+<p><input type="checkbox"> Use vertical-align to align the top of the words with the top of the logo, like in the image below.</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-7.37.55-pm.png" alt="Lab 5 header css"></p>
+<p><code>header&gt;nav&gt;a</code></p>
+<p><input type="checkbox"> background-color #fff</p>
+<p><input type="checkbox"> color #275218</p>
+<p><input type="checkbox"> text-decoration none</p>
+<p><input type="checkbox"> padding 1rem</p>
+<p><input type="checkbox"> Now the links should look like the image below, however they are overlapping on to the main area. Change the display property on the a to fix this. Use one of the three following values to achieve the desired results:block, inline-block, inline</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-7.41.34-pm.png" alt="Lab 5 navigation links overlapping main"></p>
+<p><code>header&gt;nav</code></p>
+<p><input type="checkbox"> Use padding to add 1rem to the bottom and left, and 0 to the top and right of the navigation.</p>
+<p><span class="hint">Hint:</span> If you use four values for padding they are in this order: top | right | bottom | left</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-7.49.53-pm.png" alt="Lab 5 navigation links fixed"></p>
+<p><code>header&gt;nav&gt;a:hover</code></p>
+<p><input type="checkbox"> background-color #275218</p>
+<p><input type="checkbox"> color #fff</p>
+<p><input type="checkbox"> border 1px solid #fff</p>
+<p><img src="./CS-318_files/ezgif.com-gif-maker-3-.gif" alt="Lab 5 navigation links hover error"></p>
+<p>Now when you hover you will have green buttons with white border, however the buttons jump around when you hover over them. Why is this? This is happening because when an element's width is calculated by the browser does the following:</p>
+<p>content+padding+border=element's width</p>
+<p>So let's say our content for the first button is 40px and our padding on the nav a is 1rem on both the left and right which would convert to 32px, the math would be the following:</p>
+<p>40px + 32px + 0px = 72px - non-hover</p>
+<p>40px + 32px + 2px = 74px - hover</p>
+<p>To fix this inequality we are going to add a transparent border to the nav&gt;a at 1px on each side.</p>
+<p><code>header&gt;nav&gt;a</code></p>
+<p><input type="checkbox"> border 1px solid transparent</p>
+<p><img src="./CS-318_files/ezgif.com-gif-maker-4-.gif" alt="Lab 5 navigation hover effect fixed"></p>
+<p><code>main</code></p>
+<p><input type="checkbox"> background-color #ebebeb</p>
+<p><input type="checkbox"> padding 1rem</p>
+<p><input type="checkbox"> max-width 60rem</p>
+<p><input type="checkbox"> margin 1rem auto</p>
+<p><span class="hint">Hint:</span> When adding a width or max-width to an element, you can also take advantage of auto on margin to center the element. The browser in this instance will calculate the following:</p>
+<p>browser's width - element's width / 2 = margin on left and right</p>
+<p><code>h2</code></p>
+<p><input type="checkbox"> background-color #275218</p>
+<p><input type="checkbox"> color #fff</p>
+<p><input type="checkbox"> padding 1rem</p>
+<p><input type="checkbox"> margin 0 0 1rem</p>
+<p><code>article</code></p>
+<p><input type="checkbox"> background-color #fff</p>
+<p><input type="checkbox"> padding 1rem</p>
+<p><input type="checkbox"> margin 1rem 0</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-8.23.02-pm.png" alt="Lab 5 main and article styles"></p>
+<p>Now if you scroll through the web page it looks pretty good, however the images are all different sizes. This is because by default they will display at their actual resolution. So let's fix this.</p>
+<p><code>article&gt;img</code></p>
+<p><input type="checkbox"> max-width 100%</p>
+<p><input type="checkbox"> width 30rem</p>
+<p>Now they are all the same size, but it would look nice if the text wrapped around the images. So we are going to use the property float on the images to get the text to wrap.</p>
+<p><code>article&gt;img</code></p>
+<p><input type="checkbox"> float left</p>
+<p><input type="checkbox"> margin 0 1rem 1rem 0<br>
+<em>This will create space on the right and bottom of the image.</em></p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-8.29.01-pm.png" alt="Lab 5 image setup"></p>
+<p>However, if you scroll down to the sports and entertainment sections, they look terrible. This is happening because there isn't very much text in two of the articles so the float is causing issues. We will add a class to two of the images to fix this.</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-8.29.58-pm.png" alt="Lab 5 article image issues"></p>
+<p><input type="checkbox"> In the html document add class="image-only" to the baseball image and the mahersaali image.</p>
+<p><code>article&gt;.image-only</code></p>
+<p><input type="checkbox"> float none</p>
+<p><input type="checkbox"> margin 0</p>
+<p><input type="checkbox"> width 100%</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-8.35.47-pm.png" alt="Lab 5 images fixed"></p>
+<p><code>article&gt;footer</code><br>
+<em>This will only style the footers in the articles. We don't want these styles applied to the footer after the main.</em></p>
+<p><input type="checkbox"> font-style italic</p>
+<p><input type="checkbox"> font-weight 900</p>
+<p><code>article&gt;footer span</code></p>
+<p><input type="checkbox"> color #275218</p>
+<p><input type="checkbox"> font-size 1.25rem</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-8.41.31-pm.png" alt="Lab 5 article footer styles"></p>
+<p><code>body&gt;footer</code></p>
+<p><input type="checkbox"> background color #275218</p>
+<p><input type="checkbox"> color #fff</p>
+<p><input type="checkbox"> padding 1rem</p>
+<p><input type="checkbox"> text-align center</p>
+<p><code>body&gt;footer&gt;a</code></p>
+<p><input type="checkbox"> color #fff</p>
+<p><input type="checkbox"> margin 1rem</p>
+<p><img src="./CS-318_files/screen-shot-2022-01-04-at-8.45.30-pm.png" alt="Lab 5 body footer"></p>
+<p><img src="./CS-318_files/ezgif.com-gif-maker-7-.gif" alt="Lab 5 Final"></p>
+<p><strong>Final Steps</strong></p>
+<p><input type="checkbox"> Validate your HTML. </p>
+<ul>
+<li>Navigate to <a href="https://validator.w3.org/">W3C Validator</a></li>
+<li>Select the validate by file upload tab at the top of the page</li>
+</ul>
+<p><input type="checkbox"> Lint your CSS at <a href="https://jigsaw.w3.org/css-validator/#validate_by_input">Jigsaw.w3.org</a></p>
+<p>Now look at GitHub Desktop. You should see all of your files listed out in the left column. </p>
+<p><img src="./CS-318_files/screen-shot-2022-02-10-at-11.12.32-am.png" alt="GitHub Desktop files listed">  </p>
+<p>Now you are going to commit your changes. </p>
+<p><input type="checkbox"> With all of the files checked. Fill out the Summary field in the bottom left and then click Commit to main.<br>
+<em>Committing is staging the files, so they can be pushed to the repository hosted at GitHub.</em></p>
+<p><img src="./CS-318_files/screen-shot-2022-02-10-at-11.17.14-am.png" alt="GitHub Desktop Summary field."></p>
+<p><input type="checkbox"> Now you want to push your changes to the Repository. Now if you access the repository from another computer Lab5 will be there. After you push in the top right of the nav it should say "Fetch Origin" instead of "Push Origin"</p>
+<p><img src="./CS-318_files/screen-shot-2022-02-10-at-11.20.25-am.png" alt="GitHub Push Origin"></p>
+<p><strong>Your are Done with Lab5</strong></p>
+<p>Are you someone who needs to double check that it worked? If you want to make sure the push was successful click on the "View on GitHub" button from GitHub Desktop. It will open up your repository in the browser. From there you should be able to see all of your files. </p>
+<h4>...What if I need to make a change after pushing?</h4>
+<p>So let's say you have already pushed but noticed an error. No worries, this is easy to fix.</p>
+<p><input type="checkbox"> In visual studio code make any changes you need to. Once you are done making corrections. Save.</p>
+<p><input type="checkbox"> Go back to GitHub Desktop. You should see your changes to the documents listed there.</p>
+<p><img src="./CS-318_files/screen-shot-2022-02-10-at-11.26.56-am.png" alt="GitHub fixing an error."></p>
+<p><input type="checkbox"> Fill out the Summary field again. I suggest saying what you fixed. For example: "Fixed paragraph error on Sea-Jellies"</p>
+<p><input type="checkbox"> Click "Commit to main"</p>
+<p><input type="checkbox"> Click "Push Origin" and you are done.</p></section></main>
+
+</body></html>
