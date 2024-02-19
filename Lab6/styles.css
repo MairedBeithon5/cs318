@@ -1,0 +1,37 @@
+body{
+background-color: powderblue;
+ background-image:url(images/background.jpeg);
+ background-repeat: repeat;
+ background-position: top;
+ background-size: cover;
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header{
+    background-color: gray;  
+    color:#fff;
+    }
+    
+    main{
+        background-color:#ebebeb;
+        padding:1rem;
+        max-width:60rem;
+        margin:1rem auto; 
+       }
+
+       main > .image-only{
+        max-width:100%;
+        width:30rem;
+        float: left;
+        margin:0 1rem 1rem 0;
+    }
+button{
+    background-color:white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+button:hover{
+background-color: cyan;
+}
+
+
