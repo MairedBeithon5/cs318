@@ -82,8 +82,8 @@ flex-basis:unset;
 }
 header{
 flex-wrap: nowrap;
-justify-content:left;/*Should be justify-content:space-between;*/
-/*Missing align-items:flex-end;*/
+justify-content:space-between;
+align-items:flex-end ;
 
 
 }
