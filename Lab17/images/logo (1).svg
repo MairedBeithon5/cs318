@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 498.89 498.89">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-7 {
+        fill: #231f20;
+        font-family: AureaUltra-Roman, AureaUltra;
+        font-size: 88.15px;
+      }
+
+      .cls-8 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-9 {
+        fill: #f6c083;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <circle class="cls-9" cx="249.44" cy="249.44" r="249.44"/>
+  <image width="512" height="512" transform="translate(131.22 51.01) scale(.53)" xlink:href="../../../Downloads/dog-walking.png"/>
+  <text class="cls-7" transform="translate(70.6 400.58) scale(.47 1)"><tspan class="cls-3" x="0" y="0">PA</tspan><tspan class="cls-5" x="108.34" y="0">W</tspan><tspan x="201.07" y="0">S </tspan><tspan class="cls-2" x="272.03" y="0">O</tspan><tspan x="335.32" y="0">N </tspan><tspan class="cls-4" x="422.94" y="0">P</tspan><tspan class="cls-8" x="474.24" y="0">A</tspan><tspan x="533.04" y="0">T</tspan><tspan class="cls-6" x="595.01" y="0">R</tspan><tspan class="cls-1" x="659.71" y="0">O</tspan><tspan x="723" y="0">L</tspan></text>
+</svg>
