@@ -300,6 +300,7 @@ margin: 0;
 
 .about{
   display:grid;
+  /*Delete space between 2 and fr*/
   grid-template-columns: 2 fr 1fr;
   gap:1rem;
 }
