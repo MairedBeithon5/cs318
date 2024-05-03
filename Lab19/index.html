@@ -8,22 +8,22 @@
 <title>The Eiger</title>
 </head>
 <body>
-    <!--
-    <div class="parallax">
-    <img src="images/grindelwald.jpeg" alt=grindelwald">
-    </div>
--->
 
-<div class="overlay"></div>
+    <div class="parallax">
+    <img src="images/grindelwald.jpeg" alt="grindelwald">
+    </div>
+
+
+<div class="overlay toggle-nav"></div>
 
 
 <header>
-    <div class="hamburger">
+    <div class="hamburger" onclick="toggleNav()">
         <hr>
         <hr>
         <hr>
 </div>
-    <nav>
+<nav class="toggle-nav">
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
         <a href="#climb">Climb</a>
@@ -108,13 +108,13 @@
 </main>
 
 <footer>
-        <span>Copyright <script>document.write(new Date().getFullYear());</script></span>
-        <div class="social">
-            <a href="https://fb.com"><img src="images/facebook.svg" alt="Facebook"></a>
+    <div class="social">
+        <a href="https://fb.com"><img src="images/facebook.svg" alt="Facebook"></a>
             <a href="https://www.instagram.com/"><img src="images/instagram.svg" alt="Instagram"></a>
             <a href="https://www.pinterest.com/"><img src="images/pinterest.svg" alt="Pinterest"></a>
         </div>
-    </footer>
+            <span>Copyright <script>document.write(new Date().getFullYear());</script></span>
+
 
 </footer>
 
